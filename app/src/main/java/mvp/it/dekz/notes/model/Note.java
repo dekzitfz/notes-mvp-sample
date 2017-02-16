@@ -6,15 +6,14 @@ import io.realm.annotations.PrimaryKey;
 public class Note extends RealmObject {
     @PrimaryKey
     private String id;
-    private String title,date,time,note;
+    private String title,time,note;
 
     public Note() {
     }
 
-    public Note(String id, String title, String date, String time, String note) {
+    public Note(String id, String title, String time, String note) {
         this.id = id;
         this.title = title;
-        this.date = date;
         this.time = time;
         this.note = note;
     }
@@ -33,14 +32,6 @@ public class Note extends RealmObject {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public String getTime() {
@@ -64,7 +55,6 @@ public class Note extends RealmObject {
         return "Note{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", note='" + note + '\'' +
                 '}';

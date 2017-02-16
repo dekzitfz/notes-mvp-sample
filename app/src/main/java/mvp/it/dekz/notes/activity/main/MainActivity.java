@@ -1,5 +1,6 @@
 package mvp.it.dekz.notes.activity.main;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmResults;
 import mvp.it.dekz.notes.R;
+import mvp.it.dekz.notes.activity.add.AddActivity;
 import mvp.it.dekz.notes.model.Note;
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
             @Override
             public void onClick(View view) {
                 //TODO add data
+                startActivity(new Intent(getApplicationContext(), AddActivity.class));
             }
         });
 
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     protected void onDestroy(){
-        onAttachView();
+        onDetachView();
         super.onDestroy();
     }
 
