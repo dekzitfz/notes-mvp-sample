@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import butterknife.Unbinder;
 import io.realm.RealmResults;
 import mvp.it.dekz.notes.R;
 import mvp.it.dekz.notes.adapter.ListNotesAdapter;
+import mvp.it.dekz.notes.base.ViewHolder;
 import mvp.it.dekz.notes.model.Note;
 
 public class ListNotesFragment extends Fragment implements ListNotesView {
@@ -63,15 +65,28 @@ public class ListNotesFragment extends Fragment implements ListNotesView {
     @Override
     public void onShowResult(RealmResults<Note> notes) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        ListNotesAdapter listNotesAdapter = new ListNotesAdapter(notes);
+        ListNotesAdapter listNotesAdapter = new ListNotesAdapter(notes,listNotesPresenter);
         rvNotes.setLayoutManager(linearLayoutManager);
         rvNotes.setAdapter(listNotesAdapter);
     }
 
     @Override
     public void onAttachView() {
+        Log.d(ListNotesFragment.class.getSimpleName(),"onAttachView");
         listNotesPresenter.onAttach(this);
         showList();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Log.d(ListNotesFragment.class.getSimpleName(),"onPause");
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.d(ListNotesFragment.class.getSimpleName(),"onResume");
     }
 
     @Override
