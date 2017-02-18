@@ -16,27 +16,45 @@
         android:layout_alignParentStart="true">
 
         <LinearLayout
-            android:padding="8dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvRowNoteTitle"
-                android:textStyle="bold"
-                android:text="My First Note"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:padding="8dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvRowNoteTitle"
+                    android:textStyle="bold"
+                    android:text="My First Note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvRowNoteTime"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:text="2 minutes ago"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tvRowNoteTime"
-                android:textSize="11sp"
-                android:layout_marginTop="4dp"
-                android:text="2 minutes ago"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:id="@+id/tvOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="&#8942;"
+                android:textAppearance="?android:textAppearanceLarge" />
 
         </LinearLayout>
+
+
 
     </android.support.v7.widget.CardView>
 
