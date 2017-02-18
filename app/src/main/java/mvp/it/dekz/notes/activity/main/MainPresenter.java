@@ -8,9 +8,8 @@ import io.realm.RealmResults;
 import mvp.it.dekz.notes.base.Presenter;
 import mvp.it.dekz.notes.model.Note;
 
-public class MainPresenter implements Presenter<MainView>, RealmChangeListener<RealmResults<Note>> {
+public class MainPresenter implements Presenter<MainView>{
     private MainView mainView;
-    private RealmResults<Note> notes;
 
     @Override
     public void onAttach(MainView View) {
@@ -24,15 +23,10 @@ public class MainPresenter implements Presenter<MainView>, RealmChangeListener<R
     }
 
     public void getNotesList(){
-        Realm realm = Realm.getDefaultInstance();
+        /*Realm realm = Realm.getDefaultInstance();
         notes = realm.where(Note.class).findAll();
-        notes.addChangeListener(this);
-        mainView.onShowFragment(notes);
-        realm.close();
-    }
-
-    @Override
-    public void onChange(RealmResults<Note> element) {
-        Log.d("updatedSize",String.valueOf(element.size()));
+        notes.addChangeListener(this);*/
+        mainView.onShowFragment();
+        //realm.close();
     }
 }

@@ -2,6 +2,8 @@ package mvp.it.dekz.notes.activity.main;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import butterknife.ButterKnife;
 import io.realm.RealmResults;
 import mvp.it.dekz.notes.R;
 import mvp.it.dekz.notes.activity.add.AddActivity;
+import mvp.it.dekz.notes.activity.main.fragment.listnotes.ListNotesFragment;
 import mvp.it.dekz.notes.model.Note;
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -56,7 +59,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void onShowFragment(RealmResults<Note> notes) {
-        Log.d("size",String.valueOf(notes.size()));
+    public void onShowFragment() {
+        Fragment fragment = ListNotesFragment.newInstance();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame_main, fragment);
+        fragmentTransaction.commit();
     }
 }
