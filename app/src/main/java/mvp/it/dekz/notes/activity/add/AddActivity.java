@@ -40,6 +40,12 @@ public class AddActivity extends AppCompatActivity implements AddView {
     }
 
     @Override
+    public void onBackPressed(){
+        onDetachView();
+        AddActivity.this.finish();
+    }
+
+    @Override
     protected void onDestroy(){
         onDetachView();
         super.onDestroy();

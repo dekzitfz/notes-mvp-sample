@@ -1,5 +1,6 @@
 package mvp.it.dekz.notes.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mvp.it.dekz.notes.R;
+import mvp.it.dekz.notes.activity.detail.DetailActivity;
 import mvp.it.dekz.notes.activity.main.fragment.listnotes.ListNotesPresenter;
 import mvp.it.dekz.notes.base.ViewHolder;
 import mvp.it.dekz.notes.model.Note;
@@ -30,7 +32,7 @@ public class VHListNotes extends RecyclerView.ViewHolder implements ViewHolder {
     }
 
     @Override
-    public void bind(Note note, final int pos) {
+    public void bind(final Note note, final int pos) {
         title.setText(note.getTitle());
         time.setText(DateToMillis.getRelativeTime(note.getTime()));
 
@@ -54,6 +56,15 @@ public class VHListNotes extends RecyclerView.ViewHolder implements ViewHolder {
                     }
                 });
                 popupMenu.show();
+            }
+        });
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detail = new Intent(itemView.getContext(), DetailActivity.class);
+                detail.putExtra("id",note.getId());
+                itemView.getContext().startActivity(detail);
             }
         });
     }
