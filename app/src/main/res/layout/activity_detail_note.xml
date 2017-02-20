@@ -26,13 +26,11 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:text="Note Title Here"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/tvDetailNoteTime"
-                android:text="5 Menit yang lalu"
                 android:textSize="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -41,7 +39,6 @@
                 android:id="@+id/tvDetailNoteDesc"
                 android:textSize="14sp"
                 android:layout_marginTop="10dp"
-                android:text="Disini adalah deskripsi dari notes yang dibuat, bisa berupa apa saja. yang jelas disini berisi banyak tulisan.\n\nbisa isi spasi kebawah juga\n harusnya begitu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

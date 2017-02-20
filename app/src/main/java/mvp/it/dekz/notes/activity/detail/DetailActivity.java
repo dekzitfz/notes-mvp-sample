@@ -8,6 +8,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import mvp.it.dekz.notes.R;
 import mvp.it.dekz.notes.model.Note;
+import mvp.it.dekz.notes.utils.DateToMillis;
 
 public class DetailActivity extends AppCompatActivity implements DetailView {
 
@@ -39,12 +40,13 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     public void onDetailShow(Note note) {
         title.setText(note.getTitle());
         desc.setText(note.getNote());
-        time.setText(note.getTime());
+        time.setText(DateToMillis.getRelativeTime(note.getTime()));
     }
 
     @Override
     public void onAttachView() {
         detailPresenter.onAttach(this);
+        getDetail();
     }
 
     @Override
@@ -60,5 +62,6 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     private void getDetail(){
         id = getIntent().getExtras().getString("id",null);
+        detailPresenter.getDetailNote(id);
     }
 }
