@@ -23,4 +23,10 @@ public class DetailPresenter implements Presenter<DetailView>{
         Note note = realm.where(Note.class).equalTo("id",id).findFirst();
         detailView.onDetailShow(note);
     }
+
+    public void updateDetailNote(String id){
+        Realm realm = Realm.getDefaultInstance();
+        Note note = realm.where(Note.class).equalTo("id",id).findFirst();
+        detailView.onDetailShow(note);
+    }
 }

@@ -3,6 +3,7 @@ package mvp.it.dekz.notes.activity.detail;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -74,6 +75,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     @Override
     public void onAttachView() {
+        Log.d(DetailActivity.class.getSimpleName(),"onAttachView");
         detailPresenter.onAttach(this);
         getDetail();
     }
@@ -92,5 +94,12 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     private void getDetail(){
         idNote = getIntent().getExtras().getString("id",null);
         detailPresenter.getDetailNote(idNote);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d(DetailActivity.class.getSimpleName(),"onResume");
+        detailPresenter.updateDetailNote(idNote);
     }
 }
